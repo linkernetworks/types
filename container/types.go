@@ -7,12 +7,13 @@ package container
 // We don't want user to specify an option that will not be enabled or supported.
 // import "github.com/docker/engine-api/types/container"
 type Config struct {
-	Name    string   `json:"name"`
-	Image   string   `json:"image"`
-	Args    []string `json:"args"`
-	Command []string `json:"command"`
-	Env     []EnvVar `json:"env"`
-	Ports   []Port   `json:"ports"`
+	Name         string        `json:"name"`
+	Image        string        `json:"image"`
+	Args         []string      `json:"args"`
+	Command      []string      `json:"command"`
+	Env          []EnvVar      `json:"env"`
+	Ports        []Port        `json:"ports"`
+	VolumeMounts []VolumeMount `json:"volumeMount"`
 }
 
 type EnvVar struct {
@@ -27,4 +28,10 @@ type Port struct {
 
 	// TCP or UDP
 	Protocol string `json:"protocol"`
+}
+
+type VolumeMount struct {
+	Name      string `json:"name"`
+	SubPath   string `json:"subPath"`
+	MountPath string `json:"mountPath"`
 }
