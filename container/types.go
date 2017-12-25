@@ -13,7 +13,7 @@ type Config struct {
 	Command      []string      `json:"command"`
 	Env          []EnvVar      `json:"env"`
 	Ports        []Port        `json:"ports"`
-	VolumeMounts []VolumeMount `json:"volumeMount"`
+	VolumeMounts []VolumeMount `json:"volumeMounts"`
 }
 
 type EnvVar struct {
