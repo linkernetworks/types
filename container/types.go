@@ -14,6 +14,7 @@ type Config struct {
 	Env          []EnvVar      `json:"env"`
 	Ports        []Port        `json:"ports"`
 	VolumeMounts []VolumeMount `json:"volumeMounts"`
+	Privileged   bool          `json:"securityContext"`
 }
 
 type EnvVar struct {
