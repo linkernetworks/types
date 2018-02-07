@@ -37,3 +37,8 @@ type VolumeMount struct {
 	SubPath   string `json:"subPath"`
 	MountPath string `json:"mountPath"`
 }
+
+type Volume struct {
+	Volume    VolumeMount `json:"volume"`
+	ClaimName string      `json:"claimName"`
+}
