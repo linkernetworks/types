@@ -39,6 +39,6 @@ type VolumeMount struct {
 }
 
 type Volume struct {
-	Volume    VolumeMount `json:"volume"`
-	ClaimName string      `json:"claimName"`
+	VolumeMount VolumeMount `json:"volume"`
+	ClaimName   string      `json:"claimName"`
 }
