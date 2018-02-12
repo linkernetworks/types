@@ -38,6 +38,7 @@ type VolumeMount struct {
 	MountPath string `json:"mountPath"`
 }
 
+//FIXME we should containet the Volume and VolumeMount, and the Volume should contianas the VolumeSource
 type Volume struct {
 	VolumeMount VolumeMount `json:"volume"`
 	ClaimName   string      `json:"claimName"`
