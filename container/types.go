@@ -33,13 +33,13 @@ type Port struct {
 }
 
 type VolumeMount struct {
-	Name      string `json:"name"`
-	SubPath   string `json:"subPath"`
-	MountPath string `json:"mountPath"`
+	Name      string `bson:"name" json:"name"`
+	SubPath   string `bson:"subPath" json:"subPath"`
+	MountPath string `bson:"mountPath" json:"mountPath"`
 }
 
 //FIXME we should containet the Volume and VolumeMount, and the Volume should contianas the VolumeSource
 type Volume struct {
-	VolumeMount VolumeMount `json:"volume"`
-	ClaimName   string      `json:"claimName"`
+	VolumeMount VolumeMount `bson:"volumeMount" json:"volumeMount"`
+	ClaimName   string      `bson:"claimName" json:"claimName"`
 }
