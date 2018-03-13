@@ -1,5 +1,7 @@
 package container
 
+import "gopkg.in/mgo.v2/bson"
+
 // The container spec
 // VolumeMounts is not included for the security concern.
 //
@@ -40,7 +42,7 @@ type VolumeMount struct {
 
 //FIXME we should containet the Volume and VolumeMount, and the Volume should contianas the VolumeSource
 type Volume struct {
-	ID          string      `bson:"id" json:"id"`
-	VolumeMount VolumeMount `bson:"volumeMount" json:"volumeMount"`
-	ClaimName   string      `bson:"claimName" json:"claimName"`
+	ID          bson.ObjectId `bson:"_id,omitempty" json:"id"`
+	VolumeMount VolumeMount   `bson:"volumeMount" json:"volumeMount"`
+	ClaimName   string        `bson:"claimName" json:"claimName"`
 }
