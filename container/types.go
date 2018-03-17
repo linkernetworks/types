@@ -48,9 +48,9 @@ type VolumeMount struct {
 type Volume struct {
 	ID bson.ObjectId `bson:"_id,omitempty" json:"id"`
 
-	// where to mount
-	VolumeMount VolumeMount `bson:"volumeMount" json:"volumeMount"`
-
 	// persistent volume claim for mount
 	ClaimName string `bson:"claimName" json:"claimName"`
+
+	// where to mount
+	VolumeMount VolumeMount `bson:"volumeMount" json:"volumeMount"`
 }
