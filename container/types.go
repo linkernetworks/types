@@ -35,14 +35,22 @@ type Port struct {
 }
 
 type VolumeMount struct {
-	Name      string `bson:"name" json:"name"`
-	SubPath   string `bson:"subPath" json:"subPath"`
+	Name string `bson:"name" json:"name"`
+
+	// path to mount
 	MountPath string `bson:"mountPath" json:"mountPath"`
+
+	// subpath to limit the volume access (optional)
+	SubPath string `bson:"subPath" json:"subPath"`
 }
 
 //FIXME we should containet the Volume and VolumeMount, and the Volume should contianas the VolumeSource
 type Volume struct {
-	ID          bson.ObjectId `bson:"_id,omitempty" json:"id"`
-	VolumeMount VolumeMount   `bson:"volumeMount" json:"volumeMount"`
-	ClaimName   string        `bson:"claimName" json:"claimName"`
+	ID bson.ObjectId `bson:"_id,omitempty" json:"id"`
+
+	// where to mount
+	VolumeMount VolumeMount `bson:"volumeMount" json:"volumeMount"`
+
+	// persistent volume claim for mount
+	ClaimName string `bson:"claimName" json:"claimName"`
 }
