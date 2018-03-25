@@ -9,14 +9,19 @@ import "gopkg.in/mgo.v2/bson"
 // We don't want user to specify an option that will not be enabled or supported.
 // import "github.com/docker/engine-api/types/container"
 type Config struct {
-	Name         string            `json:"name"`
-	Image        string            `json:"image"`
-	Args         []string          `json:"args"`
-	Command      []string          `json:"command"`
-	Env          []EnvVar          `json:"env"`
-	Ports        []Port            `json:"ports"`
-	VolumeMounts []VolumeMount     `json:"volumeMounts"`
-	Privileged   bool              `json:"securityContext"`
+	Name         string        `json:"name"`
+	Image        string        `json:"image"`
+	Args         []string      `json:"args"`
+	Command      []string      `json:"command"`
+	Env          []EnvVar      `json:"env"`
+	Ports        []Port        `json:"ports"`
+	VolumeMounts []VolumeMount `json:"volumeMounts"`
+	Privileged   bool          `json:"securityContext"`
+
+	// the port name to be exposed to the external service
+	// for example, we use "notebook" for notebooks
+	ExposePortName string `json:"exposePortName"`
+
 	NodeSelector map[string]string `json:"nodeSelector"`
 }
 
