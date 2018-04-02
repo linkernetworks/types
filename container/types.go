@@ -13,6 +13,7 @@ type Config struct {
 	Image        string        `json:"image"`
 	Args         []string      `json:"args"`
 	Command      []string      `json:"command"`
+	WorkingDir   string        `json:"workingDir"`
 	Env          []EnvVar      `json:"env"`
 	Ports        []Port        `json:"ports"`
 	VolumeMounts []VolumeMount `json:"volumeMounts"`
