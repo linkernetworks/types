@@ -30,6 +30,19 @@ type Config struct {
 	NodeSelector map[string]string `json:"nodeSelector"`
 }
 
+func (c *Config) GetKubernetesContainerPorts() (containerPorts []v1.ContainerPort) {
+	for _, port := range c.Ports {
+		containerPorts = append(containerPorts, v1.ContainerPort{
+			Name:          port.Name,
+			ContainerPort: port.ContainerPort,
+
+			// TODO: pull out this option when we have udp protocol needed.
+			Protocol: v1.ProtocolTCP,
+		})
+	}
+	return containerPorts
+}
+
 // GetKubernetesVolumeMounts converts the container volume mount definition to
 // the kubernetes volume mount definition.
 func (c *Config) GetKubernetesVolumeMounts() (volumeMounts []v1.VolumeMount) {
