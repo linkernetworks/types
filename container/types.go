@@ -1,6 +1,10 @@
 package container
 
-import "gopkg.in/mgo.v2/bson"
+import (
+	"gopkg.in/mgo.v2/bson"
+
+	v1 "k8s.io/api/core/v1"
+)
 
 // The container spec
 // VolumeMounts is not included for the security concern.
@@ -24,6 +28,19 @@ type Config struct {
 	ExposePortName string `json:"exposePortName"`
 
 	NodeSelector map[string]string `json:"nodeSelector"`
+}
+
+// GetKubernetesVolumeMounts converts the container volume mount definition to
+// the kubernetes volume mount definition.
+func (c *Config) GetKubernetesVolumeMounts() (volumeMounts []v1.VolumeMount) {
+	for _, mount := range c.VolumeMounts {
+		volumeMounts = append(volumeMounts, v1.VolumeMount{
+			Name:      mount.Name,
+			SubPath:   mount.SubPath,
+			MountPath: mount.MountPath,
+		})
+	}
+	return volumeMounts
 }
 
 type EnvVar struct {
