@@ -33,6 +33,16 @@ type Config struct {
 	NodeSelector map[string]string `json:"nodeSelector"`
 }
 
+func (c *Config) Copy() Config {
+	var n = *c
+	copy(n.Args, c.Args)
+	copy(n.Command, c.Command)
+	copy(n.Env, c.Env)
+	copy(n.Ports, c.Ports)
+	copy(n.VolumeMounts, c.VolumeMounts)
+	return n
+}
+
 func (c *Config) GetKubernetesContainerPorts() (containerPorts []v1.ContainerPort) {
 	for _, port := range c.Ports {
 		containerPorts = append(containerPorts, v1.ContainerPort{
