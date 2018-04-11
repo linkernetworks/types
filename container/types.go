@@ -13,15 +13,16 @@ import (
 // We don't want user to specify an option that will not be enabled or supported.
 // import "github.com/docker/engine-api/types/container"
 type Config struct {
-	Name         string        `json:"name"`
-	Image        string        `json:"image"`
-	Args         []string      `json:"args"`
-	Command      []string      `json:"command"`
-	WorkingDir   string        `json:"workingDir"`
-	Env          []EnvVar      `json:"env"`
-	Ports        []Port        `json:"ports"`
-	VolumeMounts []VolumeMount `json:"volumeMounts"`
-	Privileged   bool          `json:"securityContext"`
+	Name            string        `json:"name"`
+	Image           string        `json:"image"`
+	ImagePullPolicy v1.PullPolicy `json:"imagePullPolicy"`
+	Args            []string      `json:"args"`
+	Command         []string      `json:"command"`
+	WorkingDir      string        `json:"workingDir"`
+	Env             []EnvVar      `json:"env"`
+	Ports           []Port        `json:"ports"`
+	VolumeMounts    []VolumeMount `json:"volumeMounts"`
+	Privileged      bool          `json:"securityContext"`
 
 	ResourceRequirements v1.ResourceRequirements `json:"resourceRequirements"`
 
