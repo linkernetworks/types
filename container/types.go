@@ -23,6 +23,8 @@ type Config struct {
 	VolumeMounts []VolumeMount `json:"volumeMounts"`
 	Privileged   bool          `json:"securityContext"`
 
+	ResourceRequirements v1.ResourceRequirements `json:"resourceRequirements"`
+
 	// the port name to be exposed to the external service
 	// for example, we use "notebook" for notebooks
 	ExposePortName string `json:"exposePortName"`
